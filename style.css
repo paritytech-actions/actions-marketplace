@@ -57,6 +57,10 @@ body {
     font-weight: 600;
 }
 
+#actionOwners {
+    font-weight: 600;
+}
+
 .name {
     font-weight: 600;
     padding-right: 5px;
@@ -167,28 +171,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 .main-content {
     word-wrap: break-word;
-}
-
-@media screen and (max-width: 450px) {
-.panel {
-    max-width: 100vw;
-    margin: 5px 0 5px 0;
-}
-.main-content {
-    padding: 2rem 2rem;
-}
-}
-
-@media screen and (max-width: 400px) {
-.main-content {
-    padding: 2rem 1rem;
-}
-}
-
-@media screen and (max-width: 370px) {
-.main-content {
-    padding: 2rem 0;
-}
 }
 
 .actionInfo {
