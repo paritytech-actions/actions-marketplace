@@ -2,9 +2,9 @@ var jsonFileToUrl = 'actions-data-url.txt';
 var jsonUrl = 'actions-data.json';
 
 function loadFile(url, isJson, callback) {
-    var xobj = new XMLHttpRequest();                
+    var xobj = new XMLHttpRequest();
     if (isJson) {
-        xobj.overrideMimeType("application/json");                    
+        xobj.overrideMimeType("application/json");
     }
 
     xobj.open('GET', url, true);
@@ -14,14 +14,14 @@ function loadFile(url, isJson, callback) {
             callback(xobj.responseText);
         }
     };
-    xobj.send(null);  
+    xobj.send(null);
 }
 
 function addActionPanel(mainElement, action) {
     var panel = document.createElement('div');
-    panel.className = "panel";   
-    panel.id = action.repo             
-    panel.innerHTML =  '<div class="line"><span class="name">Repository:</span><span class="value"><a href="https://github.com/'+action.repo+'">'+action.repo+'</a></span></div>';
+    panel.className = "panel";
+    panel.id = action.repo
+    panel.innerHTML = '<div class="line"><span class="name">Repository:</span><span class="value"><a href="https://github.com/paritytech-actions/'+action.repo+'">'+action.repo+'</a></span></div>';
     panel.innerHTML += '<div class="line"><span class="name">Action:</span><span class="value">'+action.name+'</span></div>';
     panel.innerHTML += '<div class="line"><span class="name">Author:</span><span class="value">'+(action.author || "Not set") +'</span></div>';
     panel.innerHTML += '<div class="line"><span class="name">Description:</span><div class="value description">'+action.description+'</div></div>';
@@ -39,7 +39,7 @@ function setLastUpdated(lastUpdated) {
     var month = parseInt(date.substring(4, 6));
     var day = parseInt(date.substring(6, 8));
 
-    var date = new Date(year, month, day, splittedTime[0], splittedTime[1], 0, 0);
+    var date = new Date(year, month - 1, day, splittedTime[0], splittedTime[1], 0, 0);
 
     document.getElementById('lastUpdated').innerHTML = date.toLocaleString();
 }
@@ -68,4 +68,3 @@ function init() {
         )}
     )
 }
-    
