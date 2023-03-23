@@ -1,6 +1,6 @@
 on:
-  push: 
-    branches: 
+  push:
+    branches:
       - used-actions
 
   workflow_dispatch:
@@ -10,14 +10,14 @@ on:
 
 env:
   container_registry: ghcr.io/rajbos/actions-marketplace
-    
+
 jobs:
   get-action-usages:
     runs-on: ubuntu-latest
     container: ghcr.io/rajbos/actions-marketplace/powershell:7 # ${{ env.container_registry }} doesn't work :-
     steps:
     - uses: actions/checkout@v2
-    
+
     - name: Test PowerShell Modules forder in root folder
       if: always()
       run: |
@@ -41,7 +41,7 @@ jobs:
     - shell: pwsh
       if: always()
       name: Get actions used in org data
-      run: | 
+      run: |
         $actions = (.\src\load-used-actions.ps1 -orgName ${{ github.repository_owner }} -PAT ${{ secrets.PAT }} -marketplaceRepo ${{ github.repository }} -userName "x" -userEmail "x" )
         # wite the file outside of the container so we can pick it up
         Write-Host "Found actions: "
@@ -51,9 +51,9 @@ jobs:
         New-Item -Path $fileName -Value $jsonObject -Force | Out-Null
         $content = Get-Content $fileName
         Write-Host "Written [$($content.Length)] characters to the output file [$fileName]"
-    
+
     - name: upload result file as artefact
       uses: actions/upload-artifact@v2
-      with: 
+      with:
         name: summarized-actions
         path: summarized-actions.json
