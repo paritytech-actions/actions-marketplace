@@ -16,7 +16,7 @@ jobs:
 
     steps:
     # fork of devops-actions/load-available-actions
-    - uses: paritytech-actions/load-available-actions@v1.2.12
+    - uses: paritytech-actions/load-available-actions@v1.2.27
       name: Load available actions
       id: load-actions
       with:
@@ -28,13 +28,13 @@ jobs:
     - uses: actions/github-script@v6
       with:
         script: |
-          let actions = '${{ steps.load-actions.outputs.actions }}';
+          let actions = '${{ steps.load-actions.outputs.actions }}'
           const fs = require("fs");
 
-          const fileName = 'actions-data.json';
+          const fileName = 'actions-data.json'
           fs.writeFileSync(fileName, actions, function(err) {
             if(err) {
-              return console.log("error");
+              return console.log("error")
             }
           })
 
