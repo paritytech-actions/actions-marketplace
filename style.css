@@ -24,6 +24,8 @@ body {
     float: left;
 }
 
+.is-hidden { display: none; }
+
 #actionCount {
     font-weight: 600;
 }
