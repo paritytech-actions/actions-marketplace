@@ -1,5 +1,5 @@
 # [PARITYTECH-ACTIONS](https://paritytech-actions.github.io/actions-marketplace/)
-Host a GitHub Actions Marketplace for the [`paritytech`](https://github.com/paritytech) organization.
+Hosts a GitHub Actions Marketplace for the [`paritytech`](https://github.com/paritytech) organization.
 
 This repo will check all repositories in the organization it sits in and write a actions-data.json to a new branch `gh-pages`.
 
